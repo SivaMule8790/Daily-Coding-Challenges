@@ -1,0 +1,43 @@
+/*The cost of stock on each day is given in an array A[] of size N.
+Find all the segments of days on which you buy and sell the stock 
+such that the sum of difference between sell and buy prices is maximized.
+Each segment consists of indexes of two elements, first is index of day
+on which you buy stock and second is index of day on which you sell stock.*/
+
+import java.util.*;
+public class Main {
+    public static void (int[] A, int n) {
+        if (n == 1) {
+            System.out.println("No Profit");
+            return;
+        }
+        int i = 0;
+        List<String> segments = new ArrayList<>();
+        while (i < n - 1) {
+            while (i < n - 1 && A[i + 1] <= A[i]) {
+                i++;
+            }
+            int buy = i++;
+            while (i < n && A[i] >= A[i - 1]) {
+                i++;
+            }
+            int sell = i - 1;
+            if (buy < sell) {
+                segments.add("(" + buy + " " + sell + ")");
+            }
+        }
+        if (segments.isEmpty()) {
+            System.out.println("No Profit");
+        } else {
+            System.out.print("Profit is possible and possibilities are: ");
+            for (String segment : segments) {
+                System.out.print(segment+" ");
+            }
+        }
+    }
+    public static void main(String[] args) {
+        int[] A = {100, 180, 260, 310, 40, 535, 695};
+        int n = A.length;
+        stockBuySell(A, n);
+    }
+}
