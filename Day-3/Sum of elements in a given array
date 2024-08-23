@@ -1,0 +1,27 @@
+/*Sum of elements of an array*/
+/*Time Complexity:O(nlogn)*/
+
+import java.util.*;
+public class Main {   
+    public static int sum(List<Integer> arr, int low, int high) {
+        if (low == high) {
+            return arr.get(low);
+        } else {
+            int mid = (low + high) / 2;
+            int ls = sum(arr, low, mid);
+            int rs = sum(arr, mid + 1, high);
+            return ls + rs;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter size of the array : ");
+        int n = scanner.nextInt();
+        List<Integer> arr = new ArrayList<>();
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {
+            arr.add(scanner.nextInt());
+        }
+        System.out.println("Sum of given array is " + sum(arr, 0, n - 1));
+    }
+}
