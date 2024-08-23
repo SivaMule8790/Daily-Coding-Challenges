@@ -1,0 +1,27 @@
+/*Count numbers containing 4.
+You are given a number n, Return the count of total numbers from 1 to n containing 4 as a digit.*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter a number : ");
+        int n=sc.nextInt();
+        System.out.println(countNumbersWith4(n)); 
+    }
+
+    public static int countNumbersWith4(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            int num = i;
+            while (num > 0) {
+                if (num % 10 == 4) {
+                    count++;
+                    break;
+                }
+                num /= 10;
+            }
+        }
+        return count;
+    }
+}
