@@ -1,0 +1,29 @@
+// Java program to count frequencies of array items 
+
+import java.util.*;
+class Main{
+	static void countFreq(int arr[], int n)	{
+		Map<Integer, Integer> mp = new HashMap<>();
+		for (int i = 0;i < n;i++)
+		{
+			mp.put(arr[i], mp.getOrDefault(arr[i],0)+1);
+			
+		}
+		for (Map.Entry<Integer, Integer> entry : mp.entrySet())
+		{
+			System.out.println(entry.getKey()+" "+entry.getValue());
+		}
+	}
+	public static void main(String args[]) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    System.out.print("Enter size of array:");
+		int n = sc.nextInt();
+		int arr[] = new int[n];
+		System.out.print("Enter arrray elements:");
+		for(int i=0;i<n;i++){
+		    arr[i]=sc.nextInt();
+		}
+		countFreq(arr, n);
+	}
+}
