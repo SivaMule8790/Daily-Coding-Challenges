@@ -1,0 +1,26 @@
+/*Program to check if a number is Positive, Negative, Odd, Even, Zero*/
+
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args)
+	{
+	    Scanner sc=new Scanner(System.in);
+	    System.out.print("Enter your number : ");
+		int num = sc.nextInt();
+		if (num > 0) {
+			System.out.println(num+" is Positive number");
+		}
+		else if (num == 0) {
+			System.out.println(num+" is Zero");
+		}
+		else {
+			System.out.println(num+" is Negative number");
+		}
+		if (num % 2 == 0) {
+			System.out.println(num + " is Even");
+		}
+		else {
+			System.out.println(num + " is Odd");
+		}
+	}
+}
