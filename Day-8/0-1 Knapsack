@@ -1,0 +1,35 @@
+/*Given two integer arrays A and B of size N each 
+which represent values and weights associated with N items respectively.
+Also given an integer C which represents knapsack capacity.
+Find out the maximum value subset of A such that sum of the 
+weights of this subset is smaller than or equal to C.*/
+class Main {
+    public static int knapSack(int[] A, int[] B, int C) {
+        int n = A.length;
+        int[][] arr = new int[n + 1][C + 1];
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= C; j++) {
+                if (i == 0 || j == 0) {
+                    arr[i][j] = 0;
+                } else if (B[i - 1] <= j) {
+                    arr[i][j] = Math.max(A[i - 1] + arr[i - 1][j - B[i - 1]], arr[i - 1][j]);
+                } else {
+                    arr[i][j] = arr[i - 1][j];
+                }
+            }
+        }
+        return arr[n][C];
+    }
+    public static void main(String[] args) {
+        int[] A = {60, 100, 120};
+        int[] B = {10, 20, 30};
+        int C = 50;
+        int result = knapSack(A, B, C);
+        System.out.println("Maximum value in knapsack = " + result);
+        int[] A1 = {10, 20, 30, 40};
+        int[] B1 = {12, 13, 15, 19};
+        int C1 = 10;
+        int result1 =knapSack(A1, B1, C1);
+        System.out.println("Maximum value in knapsack = " + result1);
+    }
+}
