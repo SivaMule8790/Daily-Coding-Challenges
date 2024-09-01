@@ -1,0 +1,30 @@
+//Find duplicates in O(n) time 
+
+import java.util.*;
+public class Main {
+    public static List<Integer> duplicates(long[] arr) {
+        Map<Long, Integer> freqMap = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+        for (long num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        for (Map.Entry<Long, Integer> entry : freqMap.entrySet()) {
+            if (entry.getValue() > 1) {
+                res.add(Math.toIntExact(entry.getKey()));
+            }
+        }
+        if (res.isEmpty()) {
+            res.add(-1);
+        }
+        return res;
+    }
+    public static void main(String[] args) {
+        long[] a = {1, 6, 5, 2, 3, 3, 2};
+        List<Integer> duplicatesFound = duplicates(a);
+        System.out.print("Duplicate elements: ");
+        for (int element : duplicatesFound) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+}
