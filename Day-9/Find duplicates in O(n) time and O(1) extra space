@@ -1,4 +1,4 @@
-//Fibonacci number
+//Find duplicates in O(n) time and O(1) extra space
 
 import java.util.*;
 public class Solution {
